@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中学英語チャレンジクイズ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>中学英語チャレンジクイズ</h1>
+        <div id="quiz-area">
+            <div id="question-container">
+                <p id="question-number">問題 1/10</p>
+                <p id="question-text"></p>
+            </div>
+            <div id="choices-container">
+            </div>
+            <div id="feedback-container">
+                <p id="feedback-text"></p>
+                <p id="hint-text"></p>
+            </div>
+            <button id="next-button" style="display: none;">次の問題へ</button>
+        </div>
+        <div id="result-area" style="display: none;">
+            <h2>クイズ結果</h2>
+            <p id="score-text"></p>
+            <button id="retry-button">もう一度挑戦する</button>
+        </div>
+    </div>
+    <script src="quiz.js"></script>
+</body>
+</html>
