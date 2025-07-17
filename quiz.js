@@ -102,12 +102,13 @@ const resultAreaEl = document.getElementById('result-area');
 const scoreTextEl = document.getElementById('score-text');
 const retryButtonEl = document.getElementById('retry-button');
 
-let shuffledQuizData, currentQuizIndex, score;
+let shuffledQuizData, currentQuizIndex, score, firstAttemptCorrectCount;
 
 function startQuiz() {
     shuffledQuizData = [...quizData].sort(() => Math.random() - 0.5).slice(0, 10);
     currentQuizIndex = 0;
     score = 0;
+    firstAttemptCorrectCount = 0;
     quizAreaEl.style.display = 'block';
     resultAreaEl.style.display = 'none';
     showQuestion();
@@ -143,6 +144,17 @@ function selectChoice(button, selectedChoice, correctAnswer) {
         feedbackTextEl.textContent = '正解！';
         feedbackTextEl.classList.add('correct');
         hintTextEl.textContent = ''; // 正解したらヒントを消す
+
+        const correctImage = document.createElement('img');
+        correctImage.src = 'ponde_true.png';
+        correctImage.alt = '正解';
+        correctImage.style.width = '120px'; // 2.4倍のサイズに調整
+        correctImage.style.height = '120px'; // 2.4倍のサイズに調整
+        feedbackTextEl.appendChild(correctImage);
+
+        if (!feedbackTextEl.classList.contains('incorrect')) { // Only increment if it's the first attempt for this question
+            firstAttemptCorrectCount++;
+        }
         score++;
 
         const allChoiceBtns = document.querySelectorAll('.choice-btn');
@@ -155,16 +167,19 @@ function selectChoice(button, selectedChoice, correctAnswer) {
         feedbackTextEl.textContent = '不正解。もう一度！';
         feedbackTextEl.classList.add('incorrect');
         hintTextEl.textContent = `ヒント: ${shuffledQuizData[currentQuizIndex].hint}`;
+
+        const incorrectImage = document.createElement('img');
+        incorrectImage.src = 'ponde_f_1.png';
+        incorrectImage.alt = '不正解';
+        incorrectImage.style.width = '120px'; // 正解画像と同じサイズに調整
+        incorrectImage.style.height = '120px'; // 正解画像と同じサイズに調整
+        feedbackTextEl.appendChild(incorrectImage);
         
         button.disabled = true; // 間違えた選択肢だけを無効化
     }
 }
 
-function showResult() {
-    quizAreaEl.style.display = 'none';
-    resultAreaEl.style.display = 'block';
-    scoreTextEl.textContent = `10問中 ${score}問 正解しました！`;
-}
+function showResult() {    quizAreaEl.style.display = 'none';    resultAreaEl.style.display = 'block';    const percentage = (firstAttemptCorrectCount / shuffledQuizData.length) * 100;    scoreTextEl.textContent = `10問中 ${score}問 正解しました！\n一発正解率: ${percentage.toFixed(1)}%`;}
 
 nextButtonEl.addEventListener('click', () => {
     currentQuizIndex++;

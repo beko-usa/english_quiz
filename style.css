@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f8ff;
+    background-color: #add8e6; /* Light Blue */
     color: #333;
     display: flex;
     justify-content: center;
@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-    background-color: #fff;
+    background-color: #fff0f5; /* Lavender Blush (Light Pink) */
     padding: 20px 40px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -20,7 +20,7 @@ body {
 }
 
 h1 {
-    color: #0056b3;
+    color: #ff69b4; /* Hot Pink */
 }
 
 #quiz-area {
@@ -47,16 +47,16 @@ h1 {
     padding: 15px;
     margin: 10px 0;
     font-size: 1em;
-    border: 2px solid #007bff;
+    border: 2px solid #ffc0cb; /* Pink */
     border-radius: 10px;
     background-color: #fff;
-    color: #007bff;
+    color: #ff69b4; /* Hot Pink */
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
 }
 
 #choices-container button:hover:not(:disabled) {
-    background-color: #007bff;
+    background-color: #ffc0cb; /* Pink */
     color: #fff;
 }
 
@@ -71,22 +71,22 @@ h1 {
 }
 
 #feedback-text.correct {
-    color: #28a745;
+    color: #28a745; /* Green for correct */
     font-weight: bold;
 }
 
 #feedback-text.incorrect {
-    color: #dc3545;
+    color: #dc3545; /* Red for incorrect */
     font-weight: bold;
 }
 
 #hint-text {
-    color: #17a2b8;
+    color: #4682b4; /* Steel Blue */
     margin-top: 10px;
 }
 
 #next-button, #retry-button {
-    background-color: #28a745;
+    background-color: #ff69b4; /* Hot Pink */
     color: white;
     border: none;
     padding: 15px 30px;
@@ -98,7 +98,7 @@ h1 {
 }
 
 #next-button:hover, #retry-button:hover {
-    background-color: #218838;
+    background-color: #ff1493; /* Deep Pink */
 }
 
 #result-area {
